@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Notification App</title>
+</head>
+<body>
+  <h1>Simple Notification App</h1>
+  <button id="subscribe">Subscribe to Notifications</button>
+  <button id="send-notification">Send Notification</button>
+
+  <script>
+    // Request notification permission
+    document.getElementById('subscribe').addEventListener('click', () => {
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          alert('Notification permission granted.');
+        } else {
+          alert('Notification permission denied.');
+        }
+      });
+    });
+
+    // Send a notification
+    document.getElementById('send-notification').addEventListener('click', () => {
+      if (Notification.permission === 'granted')
+      {
+        alert('Please enable notifications first.');
+        
+      }
+      else {
+        new Notification('Hello!', {
+          body: 'This is a test notification.',
+          icon: 'https://via.placeholder.com/150' // URL to an icon image
+        });
+      } 
+    
+    });
+  </script>
+</body>
+</html>
